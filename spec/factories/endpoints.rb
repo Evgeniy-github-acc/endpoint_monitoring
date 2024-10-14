@@ -3,10 +3,10 @@
 # Table name: endpoints
 #
 #  id                :bigint           not null, primary key
-#  max_response_time :integer
-#  name              :string
-#  period            :integer
-#  url               :string
+#  max_response_time :integer          not null
+#  name              :string           not null
+#  period            :integer          not null
+#  url               :string           not null
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
 #

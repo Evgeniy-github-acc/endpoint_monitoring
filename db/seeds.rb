@@ -32,7 +32,6 @@ endpoints = [
 # Создаем эндпоинты в базе данных
 endpoints.each do |endpoint_data|
   endpoint = Endpoint.create!(endpoint_data)
-
   response_time = rand(50..endpoint.max_response_time) # Случайное время отклика
 
   # Генерируем записи EndpointStatus и HistoryDay
@@ -54,6 +53,8 @@ endpoints.each do |endpoint_data|
       status:
     )
   end
+
+  PingEndpointJob.perform_async(endpoint.id)
 end
 
 puts "Seed data created!"

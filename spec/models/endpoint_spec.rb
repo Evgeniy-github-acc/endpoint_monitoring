@@ -3,10 +3,10 @@
 # Table name: endpoints
 #
 #  id                :bigint           not null, primary key
-#  max_response_time :integer
-#  name              :string
-#  period            :integer
-#  url               :string
+#  max_response_time :integer          not null
+#  name              :string           not null
+#  period            :integer          not null
+#  url               :string           not null
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
 #
@@ -34,11 +34,6 @@ RSpec.describe Endpoint, type: :model do
 
   describe 'callbacks' do
     let(:endpoint) { build :endpoint }
-
-    it 'calls schedule_ping_job after create' do
-      expect(endpoint).to receive(:schedule_ping_job)
-      endpoint.save
-    end
 
     it 'broadcasts replace on update' do
       endpoint.save

@@ -24,10 +24,10 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_13_174820) do
   end
 
   create_table "endpoints", force: :cascade do |t|
-    t.string "name"
-    t.string "url"
-    t.integer "max_response_time"
-    t.integer "period"
+    t.string "name", null: false
+    t.string "url", null: false
+    t.integer "max_response_time", null: false
+    t.integer "period", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

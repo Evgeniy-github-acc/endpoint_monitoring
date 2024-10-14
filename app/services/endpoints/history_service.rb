@@ -21,7 +21,9 @@ class Endpoints::HistoryService
 
   # Метод для обновления существующей записи
   def update_history_day(history_day, endpoint)
-    history_day.total_response_time += endpoint.status.response_time if history_day.total_response_time.present?
+    if history_day.total_response_time.present?
+      history_day.total_response_time += endpoint.status.response_time
+    end
     history_day.request_count += 1
     if history_day.average_response_time.present?
       history_day.average_response_time = history_day.total_response_time / history_day.request_count

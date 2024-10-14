@@ -12,9 +12,7 @@ class EndpointsController < ApplicationController
   def create
     endpoint = Endpoint.new(endpoint_params)
     if endpoint.save
-      puts 'saved'
-    else
-      puts 'failed'
+      PingEndpointJob.perform_async(endpoint.id)
     end
   end
 
