@@ -49,7 +49,7 @@ class Endpoints::HistoryService
 
   # Метод для удаления записей старше HISTORY_STORE_DAYS
   def delete_old_history_days(endpoint)
-    endpoint.history_days.where("date < ?", HISTORY_STORE_DAYS).destroy_all
+    endpoint.history_days.where("date <= ?", HISTORY_STORE_DAYS).destroy_all
   end
 
   def set_status(history_day, endpoint)
